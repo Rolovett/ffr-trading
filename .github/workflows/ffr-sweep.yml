@@ -1,0 +1,16 @@
+name: FFR Continuation Sweep
+on:
+  workflow_dispatch:
+jobs:
+  sweep:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+      - run: pip install pandas numpy
+      - name: Run sweep
+        run: |
+          cd research/ffr
+          python sweep_continuation.py

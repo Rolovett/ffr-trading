@@ -1,0 +1,20 @@
+name: FFR Geometry Test
+on:
+  workflow_dispatch:
+    inputs:
+      k:        { description: "range >= k*ATR",    default: "3.0" }
+      m:        { description: "volume >= m*median", default: "4.0" }
+      target_r: { description: "target in R",        default: "4.0" }
+jobs:
+  geometry:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+      - run: pip install pandas numpy
+      - name: Run geometry test
+        run: |
+          cd research/ffr
+          python geometry_test.py --k "${{ github.event.inputs.k }}" --m "${{ github.event.inputs.m }}" --target_r "${{ github.event.inputs.target_r }}"

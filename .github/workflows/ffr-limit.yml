@@ -1,0 +1,16 @@
+name: FFR Limit Entry Test
+on:
+  workflow_dispatch:
+jobs:
+  limit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+      - run: pip install pandas numpy
+      - name: Run limit entry test
+        run: |
+          cd research/ffr
+          python limit_entry_test.py

@@ -1,0 +1,42 @@
+name: FFR Paper Scanner
+on:
+  schedule:
+    - cron: '2,17,32,47 * * * *'   # every 15m, just after bar close (offset-proof)
+  workflow_dispatch:
+    inputs:
+      dry_run:   { description: "true = compute, no Telegram", default: "false" }
+      test_ping: { description: "true = send a test ping and exit", default: "false" }
+concurrency:
+  group: ffr-paper
+  cancel-in-progress: false
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v5
+        with: { fetch-depth: 0 }
+      - uses: actions/setup-python@v6
+        with: { python-version: "3.11" }
+      - run: pip install requests
+      - name: Run paper scanner
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
+          TEST_PING: ${{ github.event.inputs.test_ping || 'false' }}
+        run: python3 research/ffr/live_scanner.py
+      - name: Commit signals (race-proof)
+        if: always()
+        run: |
+          git config user.name "ffr-paper[bot]"
+          git config user.email "ffr-paper[bot]@users.noreply.github.com"
+          git add research/ffr/paper_signals.json research/ffr/live_state.json research/ffr/journal.csv 2>/dev/null || true
+          if git diff --staged --quiet; then echo "no change"; exit 0; fi
+          git commit -m "FFR paper: signal log [skip ci]"
+          for n in 1 2 3 4 5; do
+            git fetch origin main; git rebase origin/main || git rebase --abort
+            if git push origin HEAD:main; then echo pushed; exit 0; fi
+            sleep 4
+          done

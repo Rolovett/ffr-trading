@@ -1,0 +1,16 @@
+name: FFR Walk-Forward
+on:
+  workflow_dispatch:
+jobs:
+  wf:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+      - run: pip install pandas numpy
+      - name: Run walk-forward
+        run: |
+          cd research/ffr
+          python walk_forward.py

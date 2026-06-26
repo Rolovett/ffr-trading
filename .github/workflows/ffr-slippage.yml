@@ -1,0 +1,16 @@
+name: FFR Slippage Stress
+on:
+  workflow_dispatch:
+jobs:
+  stress:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+      - run: pip install pandas numpy
+      - name: Run slippage stress
+        run: |
+          cd research/ffr
+          python slippage_stress.py
