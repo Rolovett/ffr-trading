@@ -1,3 +1,4 @@
 signal_id,alert_iso,side,size_btc,entry,stop,target,fill_deadline_iso,placed,fill_price,exit_price,exit_reason,realised_R,notes
 ffr_1782307800000,2026-06-24T13:30:00Z,short,3.5356,61558,62123.7,60426.7,2026-06-24T15:45:00Z,N,,,,,
 ffr_1782684900000,2026-06-28T22:15:00Z,short,9.1129,59396.6,59616.1,58957.7,2026-06-29T00:30:00Z,,,,,,
+ffr_1782739800000,2026-06-29T13:30:00Z,short,2.8298,59553.4,60260.2,58139.9,2026-06-29T15:45:00Z,,,,,,
