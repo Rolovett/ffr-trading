@@ -69,6 +69,9 @@
     "notional_usd": 168522.0,
     "fill_deadline_iso": "2026-06-29T15:45:00Z",
     "ge_35": false,
-    "outcome": null
+    "outcome": "loss",
+    "net_r": -1.042,
+    "fill_ts": 1782740700000,
+    "resolved_at": 1782752400000
   }
 ]
