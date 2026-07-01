@@ -1,15 +1,15 @@
 {
   "last_signal_ts": 1782867600000,
-  "last_run_ts": 1782914535152,
-  "last_run_iso": "2026-07-01T14:02:15Z",
+  "last_run_ts": 1782918134575,
+  "last_run_iso": "2026-07-01T15:02:14Z",
   "last_obs": {
     "bars": 239,
-    "bar_ts": 1782913500000,
-    "range_x": 2.66,
-    "vol_x": 7.12,
+    "bar_ts": 1782917100000,
+    "range_x": 1.62,
+    "vol_x": 2.68,
     "trend": -1,
     "trigger": false,
     "aligned": false
   },
-  "last_run_hour": "2026-07-01T14"
+  "last_run_hour": "2026-07-01T15"
 }
