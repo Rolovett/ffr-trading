@@ -73,5 +73,27 @@
     "net_r": -1.042,
     "fill_ts": 1782740700000,
     "resolved_at": 1782752400000
+  },
+  {
+    "signal_id": "ffr_1782867600000",
+    "bar_ts": 1782867600000,
+    "iso": "2026-07-01T01:00:00Z",
+    "side": "short",
+    "close": 58133.5,
+    "high": 58568.0,
+    "low": 57750.0,
+    "range_mult": 4.325,
+    "vol_mult": 11.597,
+    "daily_trend": -1,
+    "entry_015": 58198.7,
+    "entry_025": 58242.1,
+    "stop": 58568.0,
+    "target_015": 57460.0,
+    "risk_pct": 0.635,
+    "size_btc": 5.4153,
+    "notional_usd": 315162.0,
+    "fill_deadline_iso": "2026-07-01T03:15:00Z",
+    "ge_35": true,
+    "outcome": null
   }
 ]
